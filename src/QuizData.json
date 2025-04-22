@@ -1,0 +1,240 @@
+{
+    "Quizzes": [{
+            "Category": "Science",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "What gas do plants absorb from the air during photosynthesis?",
+                    "answer": "Carbon dioxide",
+                    "option3": "Nitrogen",
+                    "option4": "Helium",
+                    "option1": "Carbon dioxide",
+                    "option2": "Oxygen",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "Which organelle in plant cells is responsible for photosynthesis?",
+                    "answer": "Chloroplast",
+                    "option3": "Chloroplast",
+                    "option4": "Endoplasmic reticulum",
+                    "option1": "Nucleus",
+                    "option2": "Mitochondrion",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "test1",
+            "QuizTitle": "Photosynthesis Quiz"
+        }, {
+            "Category": "Math",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "What is 2 + 2?",
+                    "answer": "4",
+                    "option3": "3",
+                    "option4": "5",
+                    "option1": "4",
+                    "option2": "6",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "What is the result of 7 x 3?",
+                    "answer": "21",
+                    "option3": "18",
+                    "option4": "24",
+                    "option1": "21",
+                    "option2": "20",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "Neill",
+            "QuizTitle": "Basic Math Quiz"
+        }, {
+            "Category": "History",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "Who was the first president of the Philippines?",
+                    "answer": "Emilio Aguinaldo",
+                    "option3": "Andres Bonifacio",
+                    "option4": "Manuel Quezon",
+                    "option1": "Emilio Aguinaldo",
+                    "option2": "José Rizal",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "Who was the 16th president of the Philippines?",
+                    "answer": "Rodrigo Duterte",
+                    "option3": "Rodrigo Duterte",
+                    "option4": "Gloria Macapagal Arroyo",
+                    "option1": "Benigno Aquino III",
+                    "option2": "Fidel V. Ramos",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "Neill",
+            "QuizTitle": "Philippine Presidents Quiz"
+        }, {
+            "Category": "English",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "r u okay?",
+                    "answer": "siguro",
+                    "option3": "maybe",
+                    "option4": "siguro",
+                    "option1": "yes",
+                    "option2": "no",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "I am tired?",
+                    "answer": "shesh",
+                    "option3": "shesh",
+                    "option4": "zoomm",
+                    "option1": "yep",
+                    "option2": "oink",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "3",
+                    "question": "good or bad?",
+                    "answer": "pizza",
+                    "option3": "good",
+                    "option4": "pizza",
+                    "option1": "no",
+                    "option2": "bad",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "Neill",
+            "QuizTitle": "Random English Quiz"
+        }, {
+            "Category": "Science",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "Is Adriane Pregnant?",
+                    "answer": "Yes",
+                    "option3": "Yes",
+                    "option4": "Absolutely",
+                    "option1": "No",
+                    "option2": "Maybe",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "What is a common sign of pregnancy?",
+                    "answer": "Morning sickness",
+                    "option3": "Weight gain",
+                    "option4": "Increased appetite",
+                    "option1": "Fatigue",
+                    "option2": "Morning sickness",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "Neill",
+            "QuizTitle": "Pregnancy Quiz"
+        }, {
+            "Category": "Science",
+            "Questions": [{
+                    "questionnumber": "1",
+                    "question": "Test1",
+                    "answer": "Test4",
+                    "option3": "Test4",
+                    "option4": "Test5",
+                    "option1": "Test2",
+                    "option2": "Test3",
+                    "scenarios": ["correct", "wrong"]
+                }, {
+                    "questionnumber": "2",
+                    "question": "Test6",
+                    "answer": "Test9",
+                    "option3": "Test9",
+                    "option4": "Test10",
+                    "option1": "Test7",
+                    "option2": "Test8",
+                    "scenarios": ["correct", "wrong"]
+                }],
+            "Creator": "test1",
+            "QuizTitle": "Pregnant"
+        }, {
+            "Category": "History",
+            "Questions": [{
+                    "questionnumber": 1,
+                    "question": "test1",
+                    "answer": "test2",
+                    "option3": "test4",
+                    "option4": "test5",
+                    "option1": "test2",
+                    "option2": "test3"
+                }, {
+                    "questionnumber": 2,
+                    "question": "test6",
+                    "answer": "test8",
+                    "option3": "test9",
+                    "option4": "test10",
+                    "option1": "test7",
+                    "option2": "test8"
+                }, {
+                    "questionnumber": 3,
+                    "question": "test11",
+                    "answer": "test14",
+                    "option3": "test14",
+                    "option4": "test15",
+                    "option1": "test12",
+                    "option2": "test13"
+                }],
+            "Creator": "test1",
+            "QuizTitle": "test1"
+        }],
+    "Scenarios": [{
+            "startScenario": "Your journey begins at the entrance of ancient jungle ruins. A massive stone door blocks your path. A riddle is etched into its surface\u2014solve it to begin your quest.",
+            "endScenarios": {
+                "correct": "The stone door rumbles open. A warm breeze and the scent of adventure greet you as you step into the unknown.",
+                "wrong": "The door opens... but only partially. You squeeze through and scrape your arm. You\u2019ve made it in, but you feel uneasy, as if you disturbed something ancient."
+            }
+        }, {
+            "startScenario": "Beyond the door, you enter a dimly lit chamber. A forest spirit materializes from a glowing mushroom circle. 'Only those who respect nature may pass,' it whispers.",
+            "endScenarios": {
+                "correct": "The spirit grants you a glowing leaf talisman and reveals a hidden path leading into the heart of the forest.",
+                "wrong": "The spirit sighs and disappears. The ground trembles, and the path forward becomes overgrown with thorny vines."
+            }
+        }, {
+            "startScenario": "As you walk deeper into the forest, you find a floating pedestal bathed in moonlight. A riddle appears in glowing text above it.",
+            "endScenarios": {
+                "correct": "The pedestal hums gently and reveals a shimmering map, showing the path to a sacred grove.",
+                "wrong": "The pedestal crackles and vanishes. Your map turns blank, leaving you to trust your instincts."
+            }
+        }, {
+            "startScenario": "You arrive at the grove, where a wise owl watches you from an ancient tree. 'To find truth, one must look within,' it hoots.",
+            "endScenarios": {
+                "correct": "The owl blinks slowly and reveals a hidden stairwell beneath its perch.",
+                "wrong": "The owl flies off. You search the grove blindly and stumble into the stairwell by accident, bruised and confused."
+            }
+        }, {
+            "startScenario": "The stairwell leads to a chasm. A rainbow bridge made of light flickers in the air. A crystal guardian blocks the way.",
+            "endScenarios": {
+                "correct": "The guardian bows and allows you to pass. The bridge holds firm under your steps.",
+                "wrong": "The guardian disappears. You step onto the bridge and fall\u2014only to land in a hidden cavern below, alive but shaken."
+            }
+        }, {
+            "startScenario": "The cavern leads you to an old wooden library. A dusty book floats before you. 'Only the curious may unlock my secrets,' it beckons.",
+            "endScenarios": {
+                "correct": "The book flips open, granting you knowledge of ancient spells and the name of the final trial.",
+                "wrong": "The book slams shut. Shadows swirl around you, whispering forgotten names."
+            }
+        }, {
+            "startScenario": "You surface at a mountain pass where dwarves guard a stone gate. 'Prove your wit, and we\u2019ll forge you a weapon of destiny.'",
+            "endScenarios": {
+                "correct": "They cheer and hand you a glowing sword made from starlight.",
+                "wrong": "They shake their heads and give you a dull dagger. 'It may still serve you... somehow.'"
+            }
+        }, {
+            "startScenario": "At the summit, a ruined temple awaits. A throne sits at the center with a crystal orb floating above. A voice dares you to claim its power.",
+            "endScenarios": {
+                "correct": "You grasp the orb and feel divine energy surge through you. Visions of destiny unfold before your eyes.",
+                "wrong": "The orb shatters. You are knocked back, injured, and the throne crumbles into dust."
+            }
+        }, {
+            "startScenario": "You descend into a village engulfed in fog. At its center is a glowing well. 'Speak truth, and be healed,' says a sign.",
+            "endScenarios": {
+                "correct": "You speak from the heart. The fog lifts and the villagers reappear, cheering for their hero.",
+                "wrong": "You lie. The well turns black. The fog thickens, and shadows follow your every move."
+            }
+        }, {
+            "startScenario": "At last, you reach the sacred peak. A phoenix descends from the heavens. 'Final seeker, are you ready to shape your fate?' it cries.",
+            "endScenarios": {
+                "correct": "You answer boldly. The phoenix lifts you into the sky, flames of hope spreading across the realm. You are remembered as a legend.",
+                "wrong": "You falter. The phoenix turns away. A storm brews, and the world below falls into shadow. Your name fades into myth."
+            }
+        }]
+}
