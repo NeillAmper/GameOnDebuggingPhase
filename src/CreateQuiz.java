@@ -330,7 +330,6 @@ public final class CreateQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_option2ButtonActionPerformed
 
     private void saveQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveQuizButtonActionPerformed
-        // Validate and save the entire quiz
         validateAndSaveQuiz();
     }//GEN-LAST:event_saveQuizButtonActionPerformed
 
@@ -566,7 +565,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
 
             // Create a new quiz object with the current session data
             JSONObject newQuiz = new JSONObject();
-            newQuiz.put("QuizTitle", quizTitle);
+            newQuiz.put("QuizTitle", quizTitle.getText().trim()); // Save the text content of the quiz title
             newQuiz.put("Creator", gameMasterName);
             newQuiz.put("Category", category);
             newQuiz.put("Questions", newQuizArray);
@@ -588,6 +587,14 @@ public final class CreateQuiz extends javax.swing.JFrame {
     }
 
     private void validateAndSaveQuiz() {
+        // Check if all fields are blank
+        if (quizTitle.getText().trim().isEmpty()
+                && DEFAULT_CATEGORY.equals(categorySelection.getSelectedItem())
+                && newQuizArray.isEmpty()) {
+            showMessage("Incomplete or blank fields. Please fill out all required fields.", "Validation Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         // Validate all questions in the quiz
         for (int i = 0; i < newQuizArray.size(); i++) {
             currentQuestionIndex = i;

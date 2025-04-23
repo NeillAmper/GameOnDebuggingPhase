@@ -196,5 +196,17 @@
             "type": "Player",
             "username": "James",
             "status": "Accessible"
+        }, {
+            "password": "magandakunti",
+            "disabledFeature": "",
+            "type": "Game Master",
+            "username": "Jiminie",
+            "status": "Accessible"
+        }, {
+            "password": "magandakunti",
+            "disabledFeature": "",
+            "type": "Game Master",
+            "username": "Mitch",
+            "status": "Accessible"
         }]
 }

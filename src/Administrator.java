@@ -79,7 +79,7 @@ public final class Administrator extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         disableFeaturesTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         admin.setBackground(new java.awt.Color(204, 204, 204));

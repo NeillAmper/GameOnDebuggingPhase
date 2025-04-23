@@ -24,121 +24,122 @@ public final class GameMaster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        WelcomeMessage = new javax.swing.JLabel();
-        createQuizButton = new javax.swing.JButton();
-        deleteQuizButton = new javax.swing.JButton();
-        editQuizButton = new javax.swing.JButton();
-        leaderboardButton = new javax.swing.JButton();
-        historyButton = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         Logout = new javax.swing.JButton();
         profileButton = new javax.swing.JButton();
+        historyButton = new javax.swing.JButton();
+        leaderboardButton = new javax.swing.JButton();
+        deleteQuizButton = new javax.swing.JButton();
+        editQuizButton = new javax.swing.JButton();
+        createQuizButton = new javax.swing.JButton();
+        WelcomeMessage = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        WelcomeMessage.setText("Welcome, Game Master (...)!");
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        createQuizButton.setText("Create Quiz");
-        createQuizButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createQuizButtonActionPerformed(evt);
-            }
-        });
-
-        deleteQuizButton.setText("Delete Quiz");
-        deleteQuizButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteQuizButtonActionPerformed(evt);
-            }
-        });
-
-        editQuizButton.setText("Edit Quiz");
-        editQuizButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editQuizButtonActionPerformed(evt);
-            }
-        });
-
-        leaderboardButton.setText("Leaderboard");
-        leaderboardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leaderboardButtonActionPerformed(evt);
-            }
-        });
-
-        historyButton.setText("History");
-        historyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyButtonActionPerformed(evt);
-            }
-        });
-
+        Logout.setBackground(new java.awt.Color(51, 0, 153));
+        Logout.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        Logout.setForeground(new java.awt.Color(255, 0, 0));
         Logout.setText("Logout");
+        Logout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutActionPerformed(evt);
             }
         });
+        jLayeredPane1.add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 150, 40));
 
+        profileButton.setBackground(new java.awt.Color(51, 0, 153));
+        profileButton.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        profileButton.setForeground(new java.awt.Color(255, 255, 255));
         profileButton.setText("Profile");
+        profileButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 profileButtonActionPerformed(evt);
             }
         });
+        jLayeredPane1.add(profileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 150, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(WelcomeMessage))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(leaderboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editQuizButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteQuizButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(historyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(createQuizButton)
-                            .addComponent(profileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(WelcomeMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createQuizButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteQuizButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editQuizButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(leaderboardButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(historyButton)
-                .addGap(7, 7, 7)
-                .addComponent(profileButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Logout)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        historyButton.setBackground(new java.awt.Color(51, 0, 153));
+        historyButton.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        historyButton.setForeground(new java.awt.Color(255, 255, 255));
+        historyButton.setText("History");
+        historyButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        historyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(historyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 150, 40));
+
+        leaderboardButton.setBackground(new java.awt.Color(51, 0, 153));
+        leaderboardButton.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        leaderboardButton.setForeground(new java.awt.Color(255, 255, 255));
+        leaderboardButton.setText("Leaderboard");
+        leaderboardButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        leaderboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leaderboardButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(leaderboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 150, 40));
+
+        deleteQuizButton.setBackground(new java.awt.Color(51, 0, 153));
+        deleteQuizButton.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        deleteQuizButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteQuizButton.setText("Delete Quiz");
+        deleteQuizButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteQuizButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(deleteQuizButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 150, 40));
+
+        editQuizButton.setBackground(new java.awt.Color(51, 0, 153));
+        editQuizButton.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        editQuizButton.setForeground(new java.awt.Color(255, 255, 255));
+        editQuizButton.setText("Edit Quiz");
+        editQuizButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editQuizButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(editQuizButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 150, 40));
+
+        createQuizButton.setBackground(new java.awt.Color(51, 0, 153));
+        createQuizButton.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        createQuizButton.setForeground(new java.awt.Color(255, 255, 255));
+        createQuizButton.setText("Create Quiz");
+        createQuizButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        createQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createQuizButtonActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(createQuizButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 150, 40));
+
+        WelcomeMessage.setFont(new java.awt.Font("OCR A Extended", 1, 36)); // NOI18N
+        WelcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
+        WelcomeMessage.setText("Welcome, Game Master (...)!");
+        jLayeredPane1.add(WelcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/GameOn! (Purple BG).png"))); // NOI18N
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -214,7 +215,6 @@ public final class GameMaster extends javax.swing.JFrame {
                     // Check if disabledFeature is an array or single string
                     switch (disabledFeatureObject) {
                         case JSONArray disabledFeaturesArray -> {
-
                             // Disable buttons based on the array contents
                             for (Object feature : disabledFeaturesArray) {
                                 String featureName = (String) feature;
@@ -265,6 +265,8 @@ public final class GameMaster extends javax.swing.JFrame {
                 }
             }
         } catch (IOException | ParseException e) {
+            // Log the exception for debugging
+
         }
     }
 
@@ -281,7 +283,8 @@ public final class GameMaster extends javax.swing.JFrame {
     private javax.swing.JButton deleteQuizButton;
     private javax.swing.JButton editQuizButton;
     private javax.swing.JButton historyButton;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton leaderboardButton;
     private javax.swing.JButton profileButton;
     // End of variables declaration//GEN-END:variables
