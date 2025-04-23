@@ -149,7 +149,6 @@
         }, {
             "Category": "History",
             "Questions": [{
-                    "questionnumber": 1,
                     "question": "test1",
                     "answer": "test2",
                     "option3": "test4",
@@ -157,7 +156,6 @@
                     "option1": "test2",
                     "option2": "test3"
                 }, {
-                    "questionnumber": 2,
                     "question": "test6",
                     "answer": "test8",
                     "option3": "test9",
@@ -165,13 +163,12 @@
                     "option1": "test7",
                     "option2": "test8"
                 }, {
-                    "questionnumber": 3,
                     "question": "test11",
                     "answer": "test14",
                     "option3": "test14",
-                    "option4": "test15",
+                    "option4": "test16",
                     "option1": "test12",
-                    "option2": "test13"
+                    "option2": "test17"
                 }],
             "Creator": "test1",
             "QuizTitle": "test1"

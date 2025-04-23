@@ -249,8 +249,13 @@ public final class Administrator extends javax.swing.JFrame {
         jLabel4.setText("List of Account");
         edit_account_pane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 102, -1, -1));
 
-        typeSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Game Master", "Player" }));
+        typeSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Game Master", "Player", "Administrator" }));
         typeSelection.setEnabled(false);
+        typeSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeSelectionActionPerformed(evt);
+            }
+        });
         edit_account_pane.add(typeSelection, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
 
         jLabel7.setText("Account's Type:");
@@ -511,8 +516,8 @@ public final class Administrator extends javax.swing.JFrame {
     }//GEN-LAST:event_accountToEditSelectionActionPerformed
 
     private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
-        // Pass empty strings ("") instead of null for gameMasterName and playerName
-        new Profile(usname).setVisible(true);
+        // Pass the current username to the Profile class
+        new Profile(adminName).setVisible(true); // Pass the adminName as the username
         this.dispose(); // Dispose the current JFrame
     }//GEN-LAST:event_profileButtonActionPerformed
 
@@ -609,6 +614,10 @@ public final class Administrator extends javax.swing.JFrame {
         new DeleteQuiz(adminName, null, usname).setVisible(true); // Open the new JFrame
         this.dispose(); // Dispose the current JFrame
     }//GEN-LAST:event_deleteQuizButtonActionPerformed
+
+    private void typeSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeSelectionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeSelectionActionPerformed
 
     private void populateUserSelection_disable_account_feature() {
         try (FileReader reader = new FileReader(FILE_PATH[1])) {

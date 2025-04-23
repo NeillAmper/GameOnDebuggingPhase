@@ -1,7 +1,6 @@
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public final class QuizResult extends javax.swing.JFrame {
@@ -18,20 +17,20 @@ public final class QuizResult extends javax.swing.JFrame {
     private final String timestamp; // Timestamp for the quiz
 
     public QuizResult(String playerName, String quizData, int finalScore, int maxScore, String category, String usname, JSONArray answers, String quizTitle, String creator, String timestamp) {
-    // Initialize fields and UI components
-    this.quizData = quizData;
-    this.playerName = playerName;
-    this.usname = usname;
-    this.finalScore = finalScore;
-    this.maxScore = maxScore;
-    this.category = category;
-    this.answers = answers;
-    this.quizTitle = quizTitle;
-    this.creator = creator;
-    this.timestamp = timestamp;
+        // Initialize fields and UI components
+        this.quizData = quizData;
+        this.playerName = playerName;
+        this.usname = usname;
+        this.finalScore = finalScore;
+        this.maxScore = maxScore;
+        this.category = category;
+        this.answers = answers;
+        this.quizTitle = quizTitle;
+        this.creator = creator;
+        this.timestamp = timestamp;
 
-    initComponents();
-    displayResults(); // Populate the results table
+        initComponents();
+        displayResults(); // Populate the results table
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +40,7 @@ public final class QuizResult extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        congratulatoryMessage = new javax.swing.JLabel();
         MenuButton = new javax.swing.JButton();
         LeaderboardButton = new javax.swing.JButton();
         RetryButton = new javax.swing.JButton();
@@ -58,7 +57,7 @@ public final class QuizResult extends javax.swing.JFrame {
 
         scoreLabel.setText("Score:");
 
-        jLabel3.setText("Good Job!");
+        congratulatoryMessage.setText("Good Job!");
 
         MenuButton.setText("Menu");
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +81,15 @@ public final class QuizResult extends javax.swing.JFrame {
         });
 
         quizDetailsLabel.setText("Quiz Details");
+        quizDetailsLabel.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                quizDetailsLabelAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         timestampLabel.setText("Timestamp");
 
@@ -103,24 +111,24 @@ public final class QuizResult extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(quizDetailsLabel)
-                .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(categoryUI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(scoreLabel)
-                        .addComponent(scoreUI, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(timestampLabel)
-                .addGap(101, 101, 101))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(jLabel3))
+                        .addGap(32, 32, 32)
+                        .addComponent(quizDetailsLabel)
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(categoryUI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scoreUI, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(timestampLabel)
+                        .addGap(154, 154, 154)
+                        .addComponent(congratulatoryMessage)
+                        .addGap(99, 99, 99)
+                        .addComponent(scoreLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,23 +139,23 @@ public final class QuizResult extends javax.swing.JFrame {
                                 .addComponent(LeaderboardButton)
                                 .addGap(95, 95, 95)
                                 .addComponent(RetryButton)))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(categoryUI, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
+                .addComponent(quizDetailsLabel)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quizDetailsLabel)
-                    .addComponent(timestampLabel)
-                    .addComponent(scoreLabel))
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                    .addComponent(scoreLabel)
+                    .addComponent(congratulatoryMessage)
+                    .addComponent(timestampLabel))
+                .addGap(7, 7, 7)
                 .addComponent(scoreUI, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,9 +171,7 @@ public final class QuizResult extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +197,10 @@ public final class QuizResult extends javax.swing.JFrame {
         p.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_MenuButtonActionPerformed
+
+    private void quizDetailsLabelAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_quizDetailsLabelAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quizDetailsLabelAncestorAdded
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -233,8 +243,8 @@ public final class QuizResult extends javax.swing.JFrame {
     private void displayResults() {
         // Set dynamic labels
         quizDetailsLabel.setText("Title: " + quizTitle + " | Creator: " + creator + " | Category: " + category);
-        scoreUI.setText("Score: " + finalScore + " / " + maxScore);
-        timestampLabel.setText("Timestamp: " + (timestamp != null ? timestamp : "N/A"));
+        scoreLabel.setText("Score: " + finalScore + " / " + maxScore); // Display total score dynamically
+        timestampLabel.setText("Timestamp: " + (timestamp != null ? timestamp : "N/A")); // Display timestamp dynamically
 
         // Populate the resultTable
         DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
@@ -249,6 +259,24 @@ public final class QuizResult extends javax.swing.JFrame {
 
             model.addRow(new Object[]{question, selectedAnswer, correctAnswer, result});
         }
+
+        // Set dynamic congratulatory message
+        String message = getCongratulatoryMessage(finalScore, maxScore);
+        congratulatoryMessage.setText(message);
+    }
+
+    private String getCongratulatoryMessage(int score, int maxScore) {
+        double percentage = ((double) score / maxScore) * 100;
+
+        if (percentage <= 20) {
+            return "Better luck next time! Keep learning and improving.";
+        } else if (percentage <= 50) {
+            return "Good effort! You're making progress.";
+        } else if (percentage <= 80) {
+            return "Great job! You're doing really well.";
+        } else {
+            return "Outstanding! You're a true quiz genius!";
+        }
     }
 
 
@@ -257,8 +285,8 @@ public final class QuizResult extends javax.swing.JFrame {
     private javax.swing.JButton MenuButton;
     private javax.swing.JButton RetryButton;
     private javax.swing.JLabel categoryUI;
+    private javax.swing.JLabel congratulatoryMessage;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel quizDetailsLabel;

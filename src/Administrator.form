@@ -281,13 +281,17 @@
             <Component class="javax.swing.JComboBox" name="typeSelection">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
+                  <StringArray count="3">
                     <StringItem index="0" value="Game Master"/>
                     <StringItem index="1" value="Player"/>
+                    <StringItem index="2" value="Administrator"/>
                   </StringArray>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeSelectionActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

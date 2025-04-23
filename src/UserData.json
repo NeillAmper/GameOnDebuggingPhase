@@ -54,6 +54,11 @@
             "quizzesDone": 2,
             "player": "James",
             "timestamp": "2025-04-21, 05:03 PM"
+        }, {
+            "category": "James",
+            "quizzesDone": 1,
+            "player": "James",
+            "timestamp": "2025-04-23, 06:44 PM"
         }],
     "History": [{
             "evaluation": "pass",

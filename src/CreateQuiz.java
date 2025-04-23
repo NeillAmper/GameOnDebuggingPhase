@@ -484,6 +484,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
         questionObject.put("option3", option3Field.getText().trim());
         questionObject.put("option4", option4Field.getText().trim());
 
+        // Save the selected correct answer
         if (option1Button.isSelected()) {
             questionObject.put("answer", option1Field.getText().trim());
         } else if (option2Button.isSelected()) {
@@ -493,7 +494,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
         } else if (option4Button.isSelected()) {
             questionObject.put("answer", option4Field.getText().trim());
         } else {
-            questionObject.put("answer", null);
+            questionObject.put("answer", null); // No option selected
         }
 
         if (currentQuestionIndex < newQuizArray.size()) {

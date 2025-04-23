@@ -174,7 +174,7 @@ public class Profile extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         try {
-            String userType = fetchUserType();
+            String userType = fetchUserType(); // Fetch the user type
             switch (userType) {
                 case "Administrator" -> {
                     new Administrator(usname, usname).setVisible(true);
@@ -186,7 +186,7 @@ public class Profile extends javax.swing.JFrame {
                     new Player(usname, "Player", 1, 2, "Player", usname).setVisible(true);
                 }
                 default -> {
-                    JOptionPane.showMessageDialog(this, "No valid user type found to navigate back.", "Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Error: No valid user type found to navigate back.", "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
         } catch (HeadlessException e) {
@@ -202,109 +202,103 @@ public class Profile extends javax.swing.JFrame {
         String confirmPassword = ConfirmNewPasswordField.getText().trim();
         String newType = TypeComboBox.getSelectedItem().toString();
 
-        if (newUsername.equals("Enter New Username") && newPassword.equals("Enter New Password")
-                && confirmPassword.equals("Confirm New Password") && newType.equalsIgnoreCase(usname)) {
-            JOptionPane.showMessageDialog(this, "No changes were made to your profile.", "No Changes", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to update your profile?", "Confirm Changes", JOptionPane.YES_NO_OPTION);
-        if (confirm != JOptionPane.YES_OPTION) {
-            return;
-        }
-
         try {
+            // Parse the JSON file to get the current user data
             JSONParser parser = new JSONParser();
             JSONObject userData = (JSONObject) parser.parse(new FileReader(FILE_PATH));
             JSONArray users = (JSONArray) userData.get("Accounts");
 
-            boolean updated = false;
-
+            // Find the current user's account in the JSON file
             for (Object obj : users) {
                 JSONObject user = (JSONObject) obj;
                 if (user.get("username").toString().equals(usname)) {
-                    if (!newUsername.isBlank() && !newUsername.equals("Enter New Username")) {
-                        user.put("username", newUsername);
-                    } else {
-                        newUsername = usname;
+                    String currentPassword = user.get("password").toString();
+                    String currentUsername = user.get("username").toString();
+                    String currentType = user.get("type").toString();
+
+                    // Check if no changes were made
+                    if (newPassword.equals(currentPassword)
+                            && newUsername.equals(currentUsername)
+                            && confirmPassword.isBlank()
+                            && newType.equalsIgnoreCase(currentType)) {
+                        JOptionPane.showMessageDialog(this, "Nothing was changed.", "No Changes", JOptionPane.INFORMATION_MESSAGE);
+                        return;
                     }
 
-                    if (!newPassword.isBlank() && !newPassword.equals("Enter New Password")) {
-                        if (!newPassword.equals(confirmPassword)) {
-                            JOptionPane.showMessageDialog(this, "Passwords do not match!");
-                            return;
+                    // Check if only user type is being updated
+                    if (confirmPassword.isBlank() && newPassword.equals(currentPassword) && !newType.equalsIgnoreCase(currentType)) {
+                        user.put("type", newType);
+
+                        try (FileWriter writer = new FileWriter(FILE_PATH)) {
+                            userData.put("Accounts", users);
+                            writer.write(userData.toJSONString());
                         }
+
+                        JOptionPane.showMessageDialog(this, "User type successfully edited!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                        // Navigate back to the appropriate dashboard
+                        switch (newType) {
+                            case "Game Master" ->
+                                new GameMaster(usname, usname).setVisible(true);
+                            case "Player" ->
+                                new Player(usname, "Player", 1, 2, "Player", usname).setVisible(true);
+                            case "Administrator" ->
+                                new Administrator(usname, usname).setVisible(true);
+                            default -> {
+                            }
+                        }
+
+                        this.dispose();
+                        return;
+                    }
+
+                    // Check if passwords match before updating
+                    if (!newPassword.isBlank() && !newPassword.equals(confirmPassword)) {
+                        JOptionPane.showMessageDialog(this, "Passwords do not match!", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    // Update the user's data in the JSON file
+                    if (!newUsername.isBlank() && !newUsername.equals(currentUsername)) {
+                        user.put("username", newUsername);
+                    }
+
+                    if (!newPassword.isBlank() && !newPassword.equals(currentPassword)) {
                         user.put("password", newPassword);
                     }
 
-                    if (!newType.equalsIgnoreCase(user.get("type").toString())) {
+                    if (!newType.equalsIgnoreCase(currentType)) {
                         user.put("type", newType);
                     }
 
-                    updated = true;
-                    break;
+                    // Save the updated data back to the JSON file
+                    try (FileWriter writer = new FileWriter(FILE_PATH)) {
+                        userData.put("Accounts", users);
+                        writer.write(userData.toJSONString());
+                    }
+
+                    JOptionPane.showMessageDialog(this, "Profile updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Navigate back to the appropriate dashboard
+                    switch (newType) {
+                        case "Game Master" ->
+                            new GameMaster(newUsername, usname).setVisible(true);
+                        case "Player" ->
+                            new Player(newUsername, "Player", 1, 2, "Player", usname).setVisible(true);
+                        case "Administrator" ->
+                            new Administrator(newUsername, usname).setVisible(true);
+                        default -> {
+                        }
+                    }
+
+                    this.dispose();
+                    return;
                 }
             }
 
-            if (updated) {
-                // Update quizzes
-                JSONObject quizData = (JSONObject) parser.parse(new FileReader(FILE_PATH));
-                JSONArray quizzes = (JSONArray) quizData.get("Quizzes");
-                for (Object obj : quizzes) {
-                    JSONObject quiz = (JSONObject) obj;
-                    if (!quiz.get("creator").toString().equals(usname)) {
-                    } else {
-                        quiz.put("creator", newUsername);
-                    }
-                }
-                try (FileWriter writer = new FileWriter(FILE_PATH)) {
-                    quizData.put("Quizzes", quizzes);
-                    writer.write(quizData.toJSONString());
-                }
-
-                // Update history and standing
-                JSONArray history = (JSONArray) userData.get("History");
-                if (history != null) {
-                    for (Object obj : history) {
-                        JSONObject entry = (JSONObject) obj;
-                        if (entry.get("player").toString().equals(usname)) {
-                            entry.put("player", newUsername);
-                        }
-                    }
-                }
-
-                JSONArray standing = (JSONArray) userData.get("Standing");
-                if (standing != null) {
-                    for (Object obj : standing) {
-                        JSONObject entry = (JSONObject) obj;
-                        if (entry.get("player").toString().equals(usname)) {
-                            entry.put("player", newUsername);
-                        }
-                    }
-                }
-
-                try (FileWriter writer = new FileWriter(FILE_PATH)) {
-                    userData.put("Accounts", users);
-                    userData.put("History", history);
-                    userData.put("Standing", standing);
-                    writer.write(userData.toJSONString());
-                }
-
-                JOptionPane.showMessageDialog(this, "Profile updated successfully!");
-
-                if ("Game Master".equals(newType)) {
-                    new GameMaster(newUsername, usname).setVisible(true);
-                } else {
-                    new Player(newUsername, "Player", 1, 2, "Player", usname).setVisible(true);
-                }
-
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "User not found!");
-            }
-
+            JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException | ParseException e) {
-            JOptionPane.showMessageDialog(this, "Error updating profile: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error updating profile: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
@@ -371,7 +365,15 @@ public class Profile extends javax.swing.JFrame {
             for (Object obj : accounts) {
                 JSONObject user = (JSONObject) obj;
                 if (user.get("username").toString().equals(usname)) {
-                    return user.get("type").toString(); // Return the user type
+                    // Populate fields with user data
+                    NewUsernameField.setText(user.get("username").toString());
+                    NewPasswordField.setText(user.get("password").toString()); // Set current password
+                    ConfirmNewPasswordField.setText(""); // Default to empty
+
+                    // Update the dynamic message with the username and type
+                    String userType = user.get("type").toString();
+                    jLabel1.setText("Edit Profile Information for " + user.get("username") + " (" + userType + ")");
+                    return userType;
                 }
             }
         } catch (IOException | ParseException e) {

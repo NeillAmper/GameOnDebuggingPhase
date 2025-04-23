@@ -62,47 +62,52 @@ public class SplashScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
-        SwingUtilities.invokeLater(() -> {
-            SplashScreen sp = new SplashScreen();
-            sp.setVisible(true);
-
-            Timer timer = new Timer(100, new ActionListener() {
-                int progress = 0;
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    progress++;
-                    sp.LoadingValue.setText(progress + "%");
-
-                    if (progress == 20) {
-                        sp.LoadingMsg.setText("Loading Assets");
-                    }
-                    if (progress == 50) {
-                        sp.LoadingMsg.setText("Preparing stuff");
-                    }
-                    if (progress == 80) {
-                        sp.LoadingMsg.setText("Almost there...");
-                    }
-
-                    sp.Progressbar.setValue(progress);
-
-                    if (progress >= 100) {
-                        ((Timer) e.getSource()).stop();
-                        sp.dispose(); // Dispose of SplashScreen
-                        SwingUtilities.invokeLater(() -> {
-                            SignIn signIn = new SignIn("User", "Password");
-                            signIn.setVisible(true);
-                            signIn.revalidate();
-                            signIn.repaint();
-                        });
-                    }
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
-            });
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
-            timer.start();
+        SplashScreen sp = new SplashScreen();
+        sp.setVisible(true);
+
+        // Use a Timer to update the progress bar and loading messages
+        Timer timer = new Timer(100, new ActionListener() {
+            int progress = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                progress++;
+                sp.LoadingValue.setText(progress + "%");
+
+                if (progress == 20) {
+                    sp.LoadingMsg.setText("Loading Assets");
+                }
+                if (progress == 50) {
+                    sp.LoadingMsg.setText("Preparing stuff");
+                }
+                if (progress == 80) {
+                    sp.LoadingMsg.setText("Almost there...");
+                }
+
+                sp.Progressbar.setValue(progress);
+
+                // When progress reaches 100%, stop the timer and transition to the next screen
+                if (progress >= 100) {
+                    ((Timer) e.getSource()).stop();
+                    sp.dispose();
+                    new SignIn("Test", "Tests").setVisible(true);
+                }
+            }
         });
-    }
 
+        timer.start();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoadingMsg;

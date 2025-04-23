@@ -186,7 +186,7 @@ public class SignUp extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "User addition canceled.", "Canceled", JOptionPane.INFORMATION_MESSAGE);
         }
-   
+
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -238,7 +238,7 @@ public class SignUp extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private boolean isUsernameTaken(String username) {
         for (Object userObject : userlist) {
             JSONObject user = (JSONObject) userObject;

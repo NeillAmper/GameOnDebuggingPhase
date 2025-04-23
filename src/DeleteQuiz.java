@@ -51,7 +51,7 @@ public class DeleteQuiz extends javax.swing.JFrame {
         undoButton = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BackButton.setText("<");
         BackButton.addActionListener(new java.awt.event.ActionListener() {

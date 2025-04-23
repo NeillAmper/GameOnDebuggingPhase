@@ -312,6 +312,8 @@ public class EditQuiz extends javax.swing.JFrame {
     private void saveQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveQuizButtonActionPerformed
         saveCurrentQuestion(); // Ensure the current question is saved
 
+        boolean changesMade = false; // Flag to track if any changes were made
+
         try (FileReader reader = new FileReader(FILE_PATH)) {
             JSONObject root = (JSONObject) jsonParser.parse(reader);
             JSONArray quizzes = (JSONArray) root.get("Quizzes");
@@ -320,10 +322,28 @@ public class EditQuiz extends javax.swing.JFrame {
                 JSONObject quizObject = (JSONObject) obj;
 
                 if (quizTitleLabel.getText().equals(quizObject.get("QuizTitle"))) {
-                    quizObject.put("Category", categorySelection.getSelectedItem());
-                    quizObject.put("Questions", quizArray);
+                    // Check for changes in category or questions
+                    if (!quizObject.get("Category").equals(categorySelection.getSelectedItem())) {
+                        changesMade = true;
+                    }
+
+                    JSONArray existingQuestions = (JSONArray) quizObject.get("Questions");
+                    if (!existingQuestions.equals(quizArray)) {
+                        changesMade = true;
+                    }
+
+                    // Update the quiz data if changes were made
+                    if (changesMade) {
+                        quizObject.put("Category", categorySelection.getSelectedItem());
+                        quizObject.put("Questions", quizArray);
+                    }
                     break;
                 }
+            }
+
+            if (!changesMade) {
+                showMessage("Nothing was changed.", "No Changes", JOptionPane.INFORMATION_MESSAGE);
+                return; // Exit early if no changes were made
             }
 
             try (FileWriter writer = new FileWriter(FILE_PATH)) {
@@ -360,8 +380,6 @@ public class EditQuiz extends javax.swing.JFrame {
         if (currentQuestionIndex > 0) {
             currentQuestionIndex--;
             loadQuestion(currentQuestionIndex);
-        } else {
-            showMessage("This is the first question.", "Navigation Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_previousQuestionButtonActionPerformed
 
@@ -370,8 +388,6 @@ public class EditQuiz extends javax.swing.JFrame {
         if (currentQuestionIndex < quizArray.size() - 1) {
             currentQuestionIndex++;
             loadQuestion(currentQuestionIndex);
-        } else {
-            showMessage("This is the last question.", "Navigation Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_nextQuestionButtonActionPerformed
 
@@ -402,6 +418,8 @@ public class EditQuiz extends javax.swing.JFrame {
 
                     if (quizArray.isEmpty()) {
                         showMessage("The selected quiz has no questions to edit.", "No Questions", JOptionPane.WARNING_MESSAGE);
+                        previousQuestionButton.setEnabled(false);
+                        nextQuestionButton.setEnabled(false);
                     } else {
                         currentQuestionIndex = 0;
                         loadQuestion(currentQuestionIndex); // Load the first question
@@ -421,8 +439,7 @@ public class EditQuiz extends javax.swing.JFrame {
 
     private void loadQuestion(int index) {
         if (index < 0 || index >= quizArray.size()) {
-            showMessage("No more questions to load.", "Navigation Error", JOptionPane.ERROR_MESSAGE);
-            return;
+            return; // No operation if index is out of bounds
         }
 
         JSONObject questionObject = (JSONObject) quizArray.get(index);
@@ -448,6 +465,10 @@ public class EditQuiz extends javax.swing.JFrame {
 
         // Update the question counter
         questionCounterLabel.setText("Question #" + (index + 1));
+
+        // Enable or disable navigation buttons
+        previousQuestionButton.setEnabled(index > 0); // Disable if it's the first question
+        nextQuestionButton.setEnabled(index < quizArray.size() - 1); // Disable if it's the last question
     }
 
     private void saveCurrentQuestion() {
