@@ -393,7 +393,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_option1FieldActionPerformed
 
     private void previousQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousQuestionButtonActionPerformed
-        saveCurrentQuestion(false);
+        saveCurrentQuestion(true); // Validate and save the current question
         if (currentQuestionIndex > 0) {
             currentQuestionIndex--;
             loadQuestion(currentQuestionIndex);
@@ -402,7 +402,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_previousQuestionButtonActionPerformed
 
     private void nextQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButtonActionPerformed
-        saveCurrentQuestion(false);
+        saveCurrentQuestion(true); // Validate and save the current question
         if (currentQuestionIndex < newQuizArray.size() - 1) {
             currentQuestionIndex++;
             loadQuestion(currentQuestionIndex);
@@ -435,7 +435,7 @@ public final class CreateQuiz extends javax.swing.JFrame {
     private void updateNavigationButtons() {
         previousQuestionButton.setEnabled(currentQuestionIndex > 0);
         nextQuestionButton.setEnabled(currentQuestionIndex < numberOfQuizToEnter - 1);
-        saveQuizButton.setEnabled(newQuizArray.size() == numberOfQuizToEnter);
+        saveQuizButton.setEnabled(currentQuestionIndex == numberOfQuizToEnter - 1 && newQuizArray.size() == numberOfQuizToEnter);
     }
 
     private void loadQuestion(int index) {
@@ -497,10 +497,11 @@ public final class CreateQuiz extends javax.swing.JFrame {
             questionObject.put("answer", null); // No option selected
         }
 
+        // Update or add the question to the array
         if (currentQuestionIndex < newQuizArray.size()) {
-            newQuizArray.set(currentQuestionIndex, questionObject);
+            newQuizArray.set(currentQuestionIndex, questionObject); // Update existing question
         } else {
-            newQuizArray.add(questionObject);
+            newQuizArray.add(questionObject); // Add new question
         }
     }
 
@@ -511,6 +512,19 @@ public final class CreateQuiz extends javax.swing.JFrame {
         opt2 = option2Field.getText().trim();
         opt3 = option3Field.getText().trim();
         opt4 = option4Field.getText().trim();
+
+        // Fetch the correct answer dynamically
+        if (option1Button.isSelected()) {
+            correctanswer = opt1;
+        } else if (option2Button.isSelected()) {
+            correctanswer = opt2;
+        } else if (option3Button.isSelected()) {
+            correctanswer = opt3;
+        } else if (option4Button.isSelected()) {
+            correctanswer = opt4;
+        } else {
+            correctanswer = null;
+        }
 
         if (DEFAULT_CATEGORY.equals(category) || question.isEmpty() || opt1.isEmpty() || opt2.isEmpty() || opt3.isEmpty() || opt4.isEmpty()) {
             showMessage("Please complete all fields and select a valid answer.", "Validation Error", JOptionPane.WARNING_MESSAGE);
@@ -588,22 +602,8 @@ public final class CreateQuiz extends javax.swing.JFrame {
     }
 
     private void validateAndSaveQuiz() {
-        // Check if all fields are blank
-        if (quizTitle.getText().trim().isEmpty()
-                && DEFAULT_CATEGORY.equals(categorySelection.getSelectedItem())
-                && newQuizArray.isEmpty()) {
-            showMessage("Incomplete or blank fields. Please fill out all required fields.", "Validation Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        // Validate all questions in the quiz
-        for (int i = 0; i < newQuizArray.size(); i++) {
-            currentQuestionIndex = i;
-            if (!validateQuestionInput()) {
-                showMessage("Validation failed for Question #" + (i + 1), "Validation Error", JOptionPane.WARNING_MESSAGE);
-                return; // Stop saving if validation fails
-            }
-        }
+        // Ensure all questions are saved
+        saveCurrentQuestion(true);
 
         // Check if the quiz is ready to be saved (all questions entered)
         if (newQuizArray.size() != numberOfQuizToEnter) {
@@ -611,7 +611,18 @@ public final class CreateQuiz extends javax.swing.JFrame {
             return;
         }
 
-        saveQuizToFile(); // Save the entire quiz to file
+        // Validate each question
+        for (int i = 0; i < newQuizArray.size(); i++) {
+            currentQuestionIndex = i;
+            loadQuestion(currentQuestionIndex); // Load each question for validation
+            if (!validateQuestionInput()) {
+                showMessage("Validation failed for Question #" + (i + 1), "Validation Error", JOptionPane.WARNING_MESSAGE);
+                return; // Stop saving if validation fails
+            }
+        }
+
+        // Save the quiz to the file
+        saveQuizToFile();
         resetAllFields(); // Reset fields after saving
         showMessage("Quiz saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }

@@ -40,95 +40,80 @@ public class History extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        HistoryTable = new javax.swing.JTable();
-        BackButton = new javax.swing.JButton();
-        SearchField = new javax.swing.JTextField();
-        CategorySelection = new javax.swing.JComboBox<>();
+        historyTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
+        categorySelection = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("History");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        HistoryTable.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("History");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+
+        historyTable.setBackground(new java.awt.Color(255, 51, 51));
+        historyTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        historyTable.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        historyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Player", "Title", "Category", "Score", "Result", "Timestamp"
+                "Player", "Date", "Category", "Score"
             }
         ));
-        HistoryTable.addAncestorListener(new javax.swing.event.AncestorListener() {
+        historyTable.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                HistoryTableAncestorAdded(evt);
+                historyTableAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(HistoryTable);
+        jScrollPane1.setViewportView(historyTable);
 
-        BackButton.setText("<");
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 570, 340));
+
+        backButton.setBackground(new java.awt.Color(255, 0, 51));
+        backButton.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
+        backButton.setForeground(new java.awt.Color(153, 0, 0));
+        backButton.setText("<");
+        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
 
-        SearchField.addActionListener(new java.awt.event.ActionListener() {
+        searchField.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchFieldActionPerformed(evt);
+                searchFieldActionPerformed(evt);
             }
         });
+        jPanel1.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 200, 40));
 
-        CategorySelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Math", "Science", "History", "English" }));
-        CategorySelection.addActionListener(new java.awt.event.ActionListener() {
+        categorySelection.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        categorySelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Math", "Science", "History", "English" }));
+        categorySelection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CategorySelectionActionPerformed(evt);
+                categorySelectionActionPerformed(evt);
             }
         });
+        jPanel1.add(categorySelection, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 150, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BackButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(49, 49, 49)
-                            .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CategorySelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(BackButton))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CategorySelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Player History BG.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,14 +123,14 @@ public class History extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         try {
             // Check if adminName is not null or empty
             if (adminName != null && !adminName.isEmpty()) {
@@ -170,37 +155,37 @@ public class History extends javax.swing.JFrame {
             // Dispose the current frame to return to the previous one
             this.dispose();
         }
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void HistoryTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_HistoryTableAncestorAdded
+    private void historyTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_historyTableAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_HistoryTableAncestorAdded
+    }//GEN-LAST:event_historyTableAncestorAdded
 
-    private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
-        String keyword = SearchField.getText().trim();
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        String keyword = searchField.getText().trim();
         if (!keyword.isEmpty()) {
             searchHistory(keyword);
         } else {
             loadHistory();
         }
-    }//GEN-LAST:event_SearchFieldActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
-    private void CategorySelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategorySelectionActionPerformed
-        String keyword = SearchField.getText().trim();
+    private void categorySelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorySelectionActionPerformed
+        String keyword = searchField.getText().trim();
         if (!keyword.isEmpty()) {
             searchHistory(keyword);
         } else {
             loadHistory();
         }
-    }//GEN-LAST:event_CategorySelectionActionPerformed
+    }//GEN-LAST:event_categorySelectionActionPerformed
 
     private void loadHistory() {
-        String selectedCategory = (String) CategorySelection.getSelectedItem();
+        String selectedCategory = (String) categorySelection.getSelectedItem();
         if (selectedCategory == null) {
             selectedCategory = "All";
         }
 
-        DefaultTableModel model = (DefaultTableModel) HistoryTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) historyTable.getModel();
         model.setRowCount(0);
 
         try (FileReader reader = new FileReader(FILE_PATH)) {
@@ -275,10 +260,10 @@ public class History extends javax.swing.JFrame {
             }
 
             // Add categories to the selection box
-            CategorySelection.removeAllItems();
-            CategorySelection.addItem("All");
+            categorySelection.removeAllItems();
+            categorySelection.addItem("All");
             for (String category : categories) {
-                CategorySelection.addItem(category);
+                categorySelection.addItem(category);
             }
         } catch (IOException | ParseException e) {
             JOptionPane.showMessageDialog(this, "Error populating categories.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -286,26 +271,26 @@ public class History extends javax.swing.JFrame {
     }
 
     private void addSearchListener() {
-        SearchField.getDocument().addDocumentListener(new DocumentListener() {
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                searchHistory(SearchField.getText().trim());
+                searchHistory(searchField.getText().trim());
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                searchHistory(SearchField.getText().trim());
+                searchHistory(searchField.getText().trim());
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                searchHistory(SearchField.getText().trim());
+                searchHistory(searchField.getText().trim());
             }
         });
     }
 
     private void searchHistory(String keyword) {
-        DefaultTableModel model = (DefaultTableModel) HistoryTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) historyTable.getModel();
         model.setRowCount(0);
 
         try (FileReader reader = new FileReader(FILE_PATH)) {
@@ -382,12 +367,13 @@ public class History extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BackButton;
-    private javax.swing.JComboBox<String> CategorySelection;
-    private javax.swing.JTable HistoryTable;
-    private javax.swing.JTextField SearchField;
+    private javax.swing.JButton backButton;
+    private javax.swing.JComboBox<String> categorySelection;
+    private javax.swing.JTable historyTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 }
